@@ -1,7 +1,8 @@
 'use strict';
 
 var ArrangeController = require('../../../../../apps/someone-else/controllers/arrange');
-var Parent = require('hof').controllers.base;
+//var Parent = require('hof').controllers.base;
+var Parent = require('../../../../../lib/base-controller');
 
 describe('apps/someone-else/controllers/arrange', function () {
 

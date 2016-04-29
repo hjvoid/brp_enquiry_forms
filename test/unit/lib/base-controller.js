@@ -5,6 +5,7 @@ var proxyquire = require('proxyquire');
 describe('lib/base-controller', function () {
 
   var hof;
+  var Parent;
   var Controller;
   var controller;
 
@@ -15,16 +16,17 @@ describe('lib/base-controller', function () {
   describe('constructor', function () {
 
     beforeEach(function () {
-      hof.wizard.Controller = sinon.stub();
+      Parent = sinon.stub();
       hof.wizard.Controller.prototype.locals = sinon.stub().returns({foo: 'bar'});
       Controller = proxyquire('../../../lib/base-controller', {
-        'hof': hof
+        'hof': hof,
+        './date-base-controller': Parent
       });
     });
 
     it('calls the parent constructor', function () {
       controller = new Controller({template: 'foo'});
-      hof.wizard.Controller.should.have.been.called;
+      Parent.should.have.been.called;
     });
 
   });

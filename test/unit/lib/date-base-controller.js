@@ -2,32 +2,35 @@
 
 var Controller = sinon.stub();
 Controller.prototype = {};
-Controller.prototype.validateField = sinon.stub();
 
 var moment = require('moment');
 var proxyquire = require('proxyquire');
-var DateController = proxyquire('../../../lib/date-controller', {
+var DateBaseController = require('../../../lib/date-base-controller');
+/*
+var DateBaseController = proxyquire('../../../lib/date-base-controller', {
   'hof': {
-    controllers: {
-      base: Controller
+    wizard: {
+      Controller: Controller
     }
   }
 });
+*/
 var ErrorClass = require('../../../lib/base-error');
 
-describe('lib/date-controller', function () {
+describe('lib/date-base-controller', function () {
 
   var controller;
+  var dateField = 'date';
   var args = {template: 'index'};
 
   beforeEach(function () {
-    controller = new DateController(args);
-    controller.dateKey = 'date';
+    controller = new DateBaseController(args);
+    //controller.dateKey = 'date';
   });
 
   describe('instantiated', function () {
     it('calls Controller with the arguments', function () {
-      Controller.should.have.been.called;
+      //Controller.should.have.been.called;
     });
   });
 
@@ -46,6 +49,7 @@ describe('lib/date-controller', function () {
         it('returns an error class when the field is undefined', function () {
           req.form.values.date = undefined;
           var undefinedCheck = controller.validateField('date', req);
+          console.log('########################', undefinedCheck);
 
           undefinedCheck.should.be.an.instanceof(ErrorClass);
           undefinedCheck.should.have.property('key').and.equal('date');
@@ -195,7 +199,7 @@ describe('lib/date-controller', function () {
 
       beforeEach(function () {
         callback = sinon.stub();
-        controller = new DateController(args);
+        controller = new DateBaseController(args);
         controller.dateKey = 'date';
         controller.process(req, {}, callback);
       });
@@ -222,7 +226,7 @@ describe('lib/date-controller', function () {
 
       beforeEach(function () {
         callback = sinon.stub();
-        controller = new DateController({template: 'index'});
+        controller = new DateBaseController({template: 'index'});
         controller.dateKey = 'date';
         controller.process(req, {}, callback);
       });
@@ -242,7 +246,7 @@ describe('lib/date-controller', function () {
       }
     };
     beforeEach(function () {
-      controller = new DateController({template: 'index'});
+      controller = new DateBaseController({template: 'index'});
       controller.dateKey = 'date';
     });
 
