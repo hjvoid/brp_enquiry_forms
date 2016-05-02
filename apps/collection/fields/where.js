@@ -19,6 +19,7 @@ module.exports = {
     }]
   },
   'collection-date': {
+    validate: ['required', 'date'],
     legend: 'fields.collection-date.legend',
     hint: 'fields.dalivery-date.hint'
   },

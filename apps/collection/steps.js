@@ -6,13 +6,13 @@ module.exports = {
     next: '/where'
   },
   '/where': {
-    controller: require('./controllers/where'),
+    //controller: require('./controllers/where'),
     fields: [
       'collection-where-radio',
       'collection-date',
-      'collection-date-day',
-      'collection-date-month',
-      'collection-date-year',
+      //'collection-date-day',
+      //'collection-date-month',
+      //'collection-date-year',
     ],
     next: '/reasons'
   },
