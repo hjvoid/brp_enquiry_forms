@@ -2,8 +2,11 @@
   "address-match": {
     "required": "Tell us if your address is the same as on the letter from the Home Office"
   },
-  "consignment-number": {
+  "consignment-number-radio": {
     "required": "Do you have a consignment number?"
+  },
+  "collection": {
+    "required": "Were you due to collect your document from the Post Office?"
   },
   "email": {
     "required": "Enter your email address",

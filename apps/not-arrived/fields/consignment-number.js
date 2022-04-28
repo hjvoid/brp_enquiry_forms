@@ -17,7 +17,6 @@ module.exports = {
     ]
   },
   'consignment-number': {
-    validate: ['required'],
     dependent: {
       field: 'consignment-number-radio',
       value: 'yes'
