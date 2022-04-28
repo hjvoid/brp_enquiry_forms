@@ -52,8 +52,12 @@ module.exports = {
         }
       }]
     },
-    '/letter-lost': {},
-    '/letter-not-received': {},
+    '/letter-lost': {
+      backLink: 'letter-received'
+    },
+    '/letter-not-received': {
+      backLink: 'letter-received'
+    },
     '/on-the-way': {
       prereqs: ['/letter-received']
     },
